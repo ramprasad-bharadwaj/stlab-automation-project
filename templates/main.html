@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        box-sizing: border-box;
+        font-family: sans-serif;
+        background-color: rgb(121, 142, 142);
+      }
+      .header{
+        background-color: rgb(195, 221, 221);
+        display: inline-block;
+        padding: 0.01rem 0.5rem;
+        border-radius: 2rem;
+      }
+      .base{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(98vh - 80px);
+        flex-wrap: wrap;
+        overflow: hidden;
+        border-radius: 2rem;
+      }
+      .main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        min-width: 85%; 
+        max-height: 70vh;
+        background-color: #fff;
+        gap: 20px;
+        overflow-x: hidden;
+        padding: 1rem;
+        border-radius: 2rem;
+        background-color: rgb(195, 221, 221);
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+      .main::-webkit-scrollbar {
+        display: none;
+      }
+      .pdf-components{
+        min-width: 25%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fff;
+        gap: 20px;
+        border-radius: 1rem;
+        overflow: hidden;
+        padding: 2rem;
+        box-shadow: 0 0 5px 2px rgb(203, 215, 215);
+      }
+      .pdf-components .pdf-name{
+          font-weight: 900;
+          font-size: 1.25rem;
+      }
+      .pdf-components a{
+        text-decoration: none;
+        color: teal;
+        padding: 1rem;
+        border: 2px solid rgb(121, 142, 142);
+        border-radius: 2rem;
+      }
+    </style>
+    <title>E-Books</title>
+  </head>
+  <body>
+    <header class="header">
+        <h1>E-Book Downloader</h1>
+    </header>
+    <hr>
+    <div class="base">
+      <div class="main">
+        {% for mod_no in no %}
+          <div class="pdf-components">
+            <img src="https://static.vecteezy.com/system/resources/previews/000/644/844/original/vector-pdf-icon-symbol-sign.jpg" alt="img" width="100px">
+            <div class="pdf-name">CNR 21CV654</div>
+            <div class="pdf-desc">Module - {{ mod_no }} Notes</div>
+            <a href="{% url 'download_pdf' mod_no=mod_no %}" download>Download</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
